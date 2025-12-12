@@ -41,7 +41,7 @@ section p {font-size:1.35rem; line-height:1.85; opacity:0.95;}
 .par2 {background-image:url('https://images.unsplash.com/photo-1505842465776-3ac8e23c9f81?auto=format&fit=crop&w=2000&q=80');}
 .par3 {background-image:url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=2000&q=80');}
 
-#tempChart {max-width:600px; margin:50px auto; filter: drop-shadow(0 0 10px #ff000077); transition:1s;}
+#tempChart {max-width:600px; margin:50px auto; filter: drop-shadow(0 0 15px #ff000088); transition:1s;}
 footer {text-align:center; padding:60px; color:#9acfd4; margin-top:120px; background:#000000;}
 
 @media(max-width:820px){.hero h1{font-size:3.2rem;}.hero p{font-size:1.1rem;}.title{font-size:2.3rem;}section p{font-size:1.1rem;}}
@@ -92,12 +92,13 @@ footer {text-align:center; padding:60px; color:#9acfd4; margin-top:120px; backgr
 <script>
 const sections = document.querySelectorAll("section");
 const nav = document.getElementById("nav");
+
 function handleScroll() {
   const trigger = window.innerHeight*0.78;
   sections.forEach(s=>{if(s.getBoundingClientRect().top<trigger)s.classList.add("revealed");});
   if(window.scrollY>80) nav.classList.add("scrolled"); else nav.classList.remove("scrolled");
 
-  // Grafico dinamico al scroll
+  // Cambia colore grafico al scroll
   const scrollPercent = Math.min(window.scrollY / (document.body.scrollHeight - window.innerHeight), 1);
   const red = Math.floor(255 * scrollPercent);
   tempChart.data.datasets[0].borderColor = `rgba(${red},0,0,0.9)`;
